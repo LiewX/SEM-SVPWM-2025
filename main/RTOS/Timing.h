@@ -1,0 +1,12 @@
+#pragma once
+
+// Util
+#define CPU_UTIL_CALCULATION_PERIOD             5000
+#define WEBSOCKET_HANDLING_PERIOD               100
+#define SEND_TO_WIFI_PERIOD                     20  
+#define VELOCITY_CALCULATION_PERIOD             100
+#define MISSED_COMMUTATION_COUNTER_PERIOD       100
+#define SIMULATE_HALL_OUTPUT_STATE_PERIOD       12
+
+#define PWM_SWITCHING_PERIOD            100
+#define MOTOR_ENCODER_UPDATE_PERIOD     100
