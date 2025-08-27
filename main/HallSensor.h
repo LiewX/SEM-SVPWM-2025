@@ -1,3 +1,6 @@
+// Deprecated
+/*
+
 #pragma once
 #include <Arduino.h>
 
@@ -9,3 +12,5 @@ void IRAM_ATTR handle_interrupt_3();
 // Initialization Process
 void hall_sensors_pin_init();
 void hall_sensors_attatch_isr();
+
+*/

@@ -24,13 +24,15 @@ bool create_and_check_queue(QueueHandle_t &queue, const char* queueName, size_t 
 }
 
 // Task creation and checking function
-bool create_and_check_task(void (*taskFunc)(void*), const char* taskName, uint32_t stackSize, UBaseType_t priority, TaskHandle_t* taskHandle) {
-    BaseType_t status = xTaskCreate(taskFunc, taskName, stackSize, NULL, priority, taskHandle);
-    if (status != pdPASS) {
-        Serial.printf("Failed to create task '%s'.\n", taskName);
-        return false;
+bool create_and_check_task(bool taskEnable, void (*taskFunc)(void*), const char* taskName, uint32_t stackSize, UBaseType_t priority, TaskHandle_t* taskHandle) {
+    if (taskEnable) {
+        BaseType_t status = xTaskCreate(taskFunc, taskName, stackSize, NULL, priority, taskHandle);
+        if (status != pdPASS) {
+            Serial.printf("Failed to create task '%s'.\n", taskName);
+            return false;
+        }
+        Serial.printf("'%s' created successfully.\n", taskName);
     }
-    Serial.printf("'%s' created successfully.\n", taskName);
     return true;
 }
 

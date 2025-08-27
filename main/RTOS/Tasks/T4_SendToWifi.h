@@ -4,11 +4,11 @@
 
 extern const char* task4Name;
 
-// Global class variable for calculating CPU Utilization for task
-extern TaskCpuUtilization UtilSendToWifi;
+// Global Variable
+extern TaskCpuUtilization UtilSendToWifi; // for calculating CPU Utilization for task
 
-// Task Handle
-extern TaskHandle_t xTask_SendToWiFi;
+// Task Handler
+extern TaskHandle_t xTask_SendToWifi;
 
 // Queue Handles
 extern QueueHandle_t xQueue_wifi;

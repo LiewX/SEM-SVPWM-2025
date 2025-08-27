@@ -10,7 +10,7 @@
 
 const char* task7Name  = "Task - Simulate Hall Output";
 
-// Task Handle
+// Task Handler
 TaskHandle_t xTask_SimulateHallOutput = nullptr;
 
 // Hall sensor state table (6-step commutation)
@@ -31,6 +31,8 @@ void task_simulate_hall_output(void *pvParameters) {
     int state = 0;
     
     // Setup PWM channels
+    #if ENABLE_T7_SIMUALTE_HALL_OUTPUT
+
     pinMode(HALL_1_SIMULATE_PIN, OUTPUT);
     pinMode(HALL_2_SIMULATE_PIN, OUTPUT);
     pinMode(HALL_3_SIMULATE_PIN, OUTPUT);
@@ -55,4 +57,5 @@ void task_simulate_hall_output(void *pvParameters) {
         // Delay until the next execution time
         vTaskDelayUntil(&xLastWakeTime, xFrequency);
     }
+    #endif
 }

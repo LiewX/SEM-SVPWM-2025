@@ -2,10 +2,11 @@ from websocket import create_connection
 import time
 
 # Replace with your ESP32's IP and port
-esp32_ip = "192.168.43.221:81"
+# esp32_ip = "192.168.43.221:81"  #S3
+esp32_ip = "192.168.43.78:81"
 
 # Set the timeout duration in seconds
-timeout_duration = 15
+timeout_duration = 60
 
 ws = None  # Initialize WebSocket variable
 

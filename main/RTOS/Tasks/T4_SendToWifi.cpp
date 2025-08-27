@@ -6,8 +6,8 @@
 
 const char* task4Name  = "Task - Send WiFi Data";
 
-// Task Handle
-TaskHandle_t xTask_SendToWiFi = nullptr;
+// Task Handler
+TaskHandle_t xTask_SendToWifi = nullptr;
 
 // Queue Handles
 QueueHandle_t xQueue_wifi;

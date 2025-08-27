@@ -9,6 +9,7 @@ bool clientConnected = false;        // Track client connection status
 
 // WebSocket Server Setup
 void websocket_setup() {
+    #if (ENABLE_T3_WEBSOCKET_HANDLER && ENABLE_T4_SEND_TO_WIFI)
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
     #if FORCE_WIFI_CONNECTION
         // Wait for the ESP32 to connect to Wi-Fi
@@ -16,7 +17,7 @@ void websocket_setup() {
             static int retryCount = 0;
             Serial.printf("Connecting to WiFi (%s) ...\n", WIFI_SSID);
             retryCount++;
-            if (retryCount >= 20) {
+            if (retryCount >= 10) {
                 Serial.println("Can't connect to WiFi. Restarting.");
                 ESP.restart(); // Restart ESP32 if can't connect to WiFi after 10 tries
             }
@@ -29,5 +30,6 @@ void websocket_setup() {
         // Start the WebSocket server
         server.listen(81); // Listen on port 81
         Serial.println("WebSocket server started!");
+    #endif
     #endif
 }

@@ -4,10 +4,10 @@
 
 extern const char* task6Name;
 
-// Global class variable for calculating CPU Utilization for task
-extern TaskCpuUtilization UtilMissedCommutationCounter;
+// Global Variable
+extern TaskCpuUtilization UtilMissedCommutationCounter; // for calculating CPU Utilization for task
 
-// Task Handle
+// Task Handler
 extern TaskHandle_t xTask_MissedCommutationCounter;
 
 // Function prototypes for task

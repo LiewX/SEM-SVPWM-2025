@@ -1,13 +1,14 @@
 #pragma once
 #include <Arduino.h>
 #include "CpuUtilization.h"
+#include "ProgramRunConfigs.h"
 
 extern const char* task7Name;
 
-// Global class variable for calculating CPU Utilization for task
-extern TaskCpuUtilization UtilSimulateHallOutput;
+// Global Variable
+extern TaskCpuUtilization UtilSimulateHallOutput; // for calculating CPU Utilization for task
 
-// Task Handle
+// Task Handler
 extern TaskHandle_t xTask_SimulateHallOutput;
 
 // Function prototypes for task

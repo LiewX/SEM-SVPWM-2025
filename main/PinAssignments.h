@@ -1,38 +1,48 @@
 #pragma once
 
 // ESP32-S3-WROOM-1
-#define ESP32_S3   1
+#define ESP32_S3   0
+
+#if ESP32_S3
 // Input
-#define HALL_1_PIN GPIO_NUM_4
-#define HALL_2_PIN GPIO_NUM_5
-#define HALL_3_PIN GPIO_NUM_6
-#define THROTTLE_INPUT_PIN 2  // Analog 
+#define HALL_CAP_U_GPIO         GPIO_NUM_4
+#define HALL_CAP_V_GPIO         GPIO_NUM_5
+#define HALL_CAP_W_GPIO         GPIO_NUM_6
+#define HALL_INTERNAL_PULLUP    0
+#define THROTTLE_INPUT_PIN      2  // Analog 
 
 // Output
-#define AH_OUTPUT_PIN 7  // Output pin for MCPWM0A // HIGH Side
-#define AL_OUTPUT_PIN 15  // Output pin for MCPWM0B // LOW Side
-#define BH_OUTPUT_PIN 16  // Output pin for MCPWM1A // HIGH Side
-#define BL_OUTPUT_PIN 17  // Output pin for MCPWM1B // LOW Side
-#define CH_OUTPUT_PIN 18  // Output pin for MCPWM2A // HIGH Side
-#define CL_OUTPUT_PIN 8  // Output pin for MCPWM2B // LOW Side
-// #define LED_STATUS_PIN 2
+#define BLDC_PWM_UH_GPIO 7      // Output pin for MCPWM0A // HIGH Side
+#define BLDC_PWM_UL_GPIO 15     // Output pin for MCPWM0B // LOW Side
+#define BLDC_PWM_VH_GPIO 16     // Output pin for MCPWM1A // HIGH Side
+#define BLDC_PWM_VL_GPIO 17     // Output pin for MCPWM1B // LOW Side
+#define BLDC_PWM_WH_GPIO 18     // Output pin for MCPWM2A // HIGH Side
+#define BLDC_PWM_WL_GPIO 8      // Output pin for MCPWM2B // LOW Side
 
 #define HALL_1_SIMULATE_PIN 10
 #define HALL_2_SIMULATE_PIN 11
 #define HALL_3_SIMULATE_PIN 12
 
-// ESP32 (Normal Variant)
-// // Input
-// #define HALL_1_PIN 36
-// #define HALL_2_PIN 39
-// #define HALL_3_PIN 34
-// #define THROTTLE_INPUT_PIN 35  // Analog 
+#else
 
-// // Output
-// #define AH_OUTPUT_PIN 12  // Output pin for MCPWM0A // HIGH Side
-// #define AL_OUTPUT_PIN 13  // Output pin for MCPWM0B // LOW Side
-// #define BH_OUTPUT_PIN 27  // Output pin for MCPWM1A // HIGH Side
-// #define BL_OUTPUT_PIN 14  // Output pin for MCPWM1B // LOW Side
-// #define CH_OUTPUT_PIN 25  // Output pin for MCPWM2A // HIGH Side
-// #define CL_OUTPUT_PIN 26  // Output pin for MCPWM2B // LOW Side
-// #define LED_STATUS_PIN 2
+// ESP32 (Normal Variant)
+// Input
+#define HALL_INTERNAL_PULLUP    0
+// #define HALL_CAP_U_GPIO GPIO_NUM_36
+// #define HALL_CAP_V_GPIO GPIO_NUM_39
+// #define HALL_CAP_W_GPIO GPIO_NUM_34
+#define HALL_CAP_U_GPIO GPIO_NUM_21
+#define HALL_CAP_V_GPIO GPIO_NUM_19
+#define HALL_CAP_W_GPIO GPIO_NUM_18
+#define THROTTLE_INPUT_PIN 35  // Analog 
+
+// Output
+#define BLDC_PWM_UH_GPIO 12  // Output pin for MCPWM0A // HIGH Side
+#define BLDC_PWM_UL_GPIO 13  // Output pin for MCPWM0B // LOW Side
+#define BLDC_PWM_VH_GPIO 27  // Output pin for MCPWM1A // HIGH Side
+#define BLDC_PWM_VL_GPIO 14  // Output pin for MCPWM1B // LOW Side
+#define BLDC_PWM_WH_GPIO 25  // Output pin for MCPWM2A // HIGH Side
+#define BLDC_PWM_WL_GPIO 26  // Output pin for MCPWM2B // LOW Side
+#define LED_STATUS_PIN 2
+
+#endif

@@ -91,7 +91,6 @@ void TaskCpuUtilization::send_util_to_wifi(){
         );
         // Send the formatted message to the queue
         xQueueSend(xQueue_wifi, &formattedMessage, 0);
-        Serial.print("Test");
     }
     #endif
 }

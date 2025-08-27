@@ -8,7 +8,7 @@
 
 const char* task5Name  = "Task - Motor Velocity Calculation";
 
-// Task Handle
+// Task Handler
 TaskHandle_t xTask_MotorVelocityCalculation = nullptr;
 
 // Task Definition
@@ -16,8 +16,8 @@ void task_motor_velocity_calculation(void *pvParameters) {
     const TickType_t xFrequency = pdMS_TO_TICKS(VELOCITY_CALCULATION_PERIOD); // Set task running frequency
     char formattedMessage[BUFFER_SIZE];
     uint32_t countsPerPeriod = 0;
-    double countsPerMinute = 0;
-    double rpm = 0;
+    double countsPerMinute = 0.0;
+    double rpm = 0.0;
     TickType_t xLastWakeTime = xTaskGetTickCount();   // Initialize last wake time
 
     for (;;) {
@@ -26,8 +26,8 @@ void task_motor_velocity_calculation(void *pvParameters) {
 
         // Todo: double check
         countsPerPeriod = ulTaskNotifyTake(pdTRUE, 0);
-        countsPerMinute = (double) countsPerPeriod * (60000 / VELOCITY_CALCULATION_PERIOD);
-        rpm = countsPerMinute / 6;
+        countsPerMinute = (double) countsPerPeriod * (60000.0 / VELOCITY_CALCULATION_PERIOD);
+        rpm = countsPerMinute / 6.0;
 
         #if PRINT_MOTOR_RPM
             // Create formatted message

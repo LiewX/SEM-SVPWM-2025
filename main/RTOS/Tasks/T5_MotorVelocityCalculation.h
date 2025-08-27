@@ -4,10 +4,10 @@
 
 extern const char* task5Name;
 
-// Global class variable for calculating CPU Utilization for task
-extern TaskCpuUtilization UtilMotorVelocityCalculation;
+// Global Variable
+extern TaskCpuUtilization UtilMotorVelocityCalculation; // for calculating CPU Utilization for task
 
-// Task Handle
+// Task Handler
 extern TaskHandle_t xTask_MotorVelocityCalculation;
 
 // Function prototypes for task

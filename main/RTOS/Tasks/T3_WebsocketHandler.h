@@ -4,10 +4,10 @@
 
 extern const char* task3Name;
 
-// Global class variable for calculating CPU Utilization for task
-extern TaskCpuUtilization UtilWebSocketHandler;
+// Global Variable
+extern TaskCpuUtilization UtilWebSocketHandler; // for calculating CPU Utilization for task
 
-// Task Handle
+// Task Handler
 extern TaskHandle_t xTask_WebsocketHandler;
 
 // Function prototypes for task

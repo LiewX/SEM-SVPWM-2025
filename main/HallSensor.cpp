@@ -1,3 +1,5 @@
+// Deprecated
+/*
 #include "HallSensor.h"
 #include "PinAssignments.h"
 #include "Tasks/TasksHeaders.h"
@@ -14,13 +16,13 @@ void IRAM_ATTR handle_interrupt() {
                       (digitalRead(HALL_2_PIN) << 1) |
                        digitalRead(HALL_3_PIN);
     #else
-        hallPattern = (gpio_get_level(HALL_1_PIN) << 2) |
-                      (gpio_get_level(HALL_2_PIN) << 1) |
-                       gpio_get_level(HALL_3_PIN);
+    hallPattern = (gpio_get_level(HALL_1_PIN) << 2) |
+    (gpio_get_level(HALL_2_PIN) << 1) |
+    gpio_get_level(HALL_3_PIN);
     #endif
-
+    
     vTaskNotifyGiveFromISR(xTask_UpdateHalls, &xHigherPriorityTaskWoken);
-
+    
     if (xHigherPriorityTaskWoken == pdTRUE) portYIELD_FROM_ISR();
 }
 
@@ -29,9 +31,9 @@ void hall_sensors_pin_init() {
     pinMode(HALL_1_PIN, INPUT);
     pinMode(HALL_2_PIN, INPUT);
     pinMode(HALL_3_PIN, INPUT);
-
+    
     // Todo: set internal pull up for hall sensor pins
-
+    
     
 }
 
@@ -41,3 +43,4 @@ void hall_sensors_attatch_isr() {
     attachInterrupt(digitalPinToInterrupt(HALL_2_PIN), handle_interrupt, CHANGE);
     attachInterrupt(digitalPinToInterrupt(HALL_3_PIN), handle_interrupt, CHANGE);
 }
+*/

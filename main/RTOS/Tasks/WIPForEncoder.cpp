@@ -1,19 +1,20 @@
-#include "T2_UpdateHalls.h"
+#if 0
+#include "T2_SvpwmCommutation.h"
 #include <Arduino.h>
 #include "Timing.h"
 #include "T5_MotorVelocityCalculation.h"
 #include "ProgramRunConfigs.h"
-#if PRINT_PERCEIVED_STATE
+#if PRINT_INDIVIDUAL_STATES
     #include "Tasks/T4_SendToWifi.h"
 #endif
 
-const char* task2Name  = "Task - Update Encoders";
+const char* task2Name  = "Task - Get Throttle Input";
 
 // Task Handle
-TaskHandle_t xTask_UpdateHalls = nullptr;
+TaskHandle_t xTask_SvpwmCommutation = nullptr;
 
 // Task Definition
-void task_update_halls(void *pvParameters) {
+void task_svpwm_commutation(void *pvParameters) {
     uint8_t invalidStateCount = 0;
     char formattedMessage[BUFFER_SIZE];
     ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -25,7 +26,7 @@ void task_update_halls(void *pvParameters) {
             // Increment notification count for rpm calculation
             xTaskNotifyGive(xTask_MotorVelocityCalculation);
             invalidStateCount = 0;
-            #if PRINT_PERCEIVED_STATE
+            #if PRINT_INDIVIDUAL_STATES
                 // Create formatted message
                 snprintf(
                     formattedMessage,
@@ -53,7 +54,7 @@ void task_update_halls(void *pvParameters) {
             // Increment notification count for rpm calculation
             xTaskNotifyGive(xTask_MotorVelocityCalculation);
             invalidStateCount = 0;
-            #if PRINT_PERCEIVED_STATE
+            #if PRINT_INDIVIDUAL_STATES
                 // Create formatted message
                 snprintf(
                     formattedMessage,
@@ -81,7 +82,7 @@ void task_update_halls(void *pvParameters) {
             // Increment notification count for rpm calculation
             xTaskNotifyGive(xTask_MotorVelocityCalculation);
             invalidStateCount = 0;
-            #if PRINT_PERCEIVED_STATE
+            #if PRINT_INDIVIDUAL_STATES
                 // Create formatted message
                 snprintf(
                     formattedMessage,
@@ -109,7 +110,7 @@ void task_update_halls(void *pvParameters) {
             // Increment notification count for rpm calculation
             xTaskNotifyGive(xTask_MotorVelocityCalculation);
             invalidStateCount = 0;
-            #if PRINT_PERCEIVED_STATE
+            #if PRINT_INDIVIDUAL_STATES
                 // Create formatted message
                 snprintf(
                     formattedMessage,
@@ -137,7 +138,7 @@ void task_update_halls(void *pvParameters) {
             // Increment notification count for rpm calculation
             xTaskNotifyGive(xTask_MotorVelocityCalculation);
             invalidStateCount = 0;
-            #if PRINT_PERCEIVED_STATE
+            #if PRINT_INDIVIDUAL_STATES
                 // Create formatted message
                 snprintf(
                     formattedMessage,
@@ -165,7 +166,7 @@ void task_update_halls(void *pvParameters) {
             // Increment notification count for rpm calculation
             xTaskNotifyGive(xTask_MotorVelocityCalculation);
             invalidStateCount = 0;
-            #if PRINT_PERCEIVED_STATE
+            #if PRINT_INDIVIDUAL_STATES
                 // Create formatted message
                 snprintf(
                     formattedMessage,
@@ -191,7 +192,7 @@ void task_update_halls(void *pvParameters) {
         // Todo: record invalid state and mention to user. currently, it is transmitted through missed state counts through else statements
         if (invalidStateCount == 6) {
             invalidStateCount = 0;
-            #if PRINT_PERCEIVED_STATE
+            #if PRINT_INDIVIDUAL_STATES
                 // Create formatted message
                 snprintf(
                     formattedMessage,
@@ -207,3 +208,4 @@ void task_update_halls(void *pvParameters) {
 
     }
 }
+#endif

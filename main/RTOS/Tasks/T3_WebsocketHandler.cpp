@@ -6,7 +6,7 @@
 
 const char* task3Name  = "Task - WebSocket Handler";
 
-// Task Handle
+// Task Handler
 TaskHandle_t xTask_WebsocketHandler = nullptr;
 
 // Task Definition
